@@ -1,6 +1,130 @@
 # DeepLabv3Plus-Pytorch
 
-Pretrained DeepLabv3, DeepLabv3+ for Pascal VOC & Cityscapes.
+## 项目简介
+1. **PyTorch 到 ONNX 的转换** (`pt2onnx.py`)
+   - 将训练好的 PyTorch 模型导出为 ONNX 格式，为后续处理做准备。
+
+2. **ONNX 模型简化** (`simplify.py`)
+   - 简化 ONNX 模型结构，优化推理性能。
+
+3. **ONNX 到 NCNN 的转换** (`onnx2ncnn.py`)
+   - 将 ONNX 模型转换为 NCNN 格式，使其适用于移动平台。
+
+4. **量化表生成** (`ncnn2table.py`)
+   - 创建量化所需的映射表，为 INT8 量化做准备。
+
+5. **训练后量化** (`ncnn2int8.py`)
+   - 执行 INT8 量化，显著减小模型大小并提高推理速度。
+
+6. **性能评估** (`map50.py`)
+   - 计算模型的平均交并比（mIoU），评估量化后模型的性能。
+
+## 文件结构
+
+1.
+- `pt2onnx.py`: 主要的脚本文件，用于将 PyTorch 模型转换为 ONNX 模型。
+- `best_deeplabv3plus_mobilenet_cityscapes_os16.pth`: 预训练的模型权重文件。
+
+2.
+- `simplify.py`: 脚本文件，用于简化 ONNX 模型。
+
+3.
+- `onnx2ncnn.py`: 将 ONNX 模型转换为 NCNN 模型。
+  
+4.
+- `ncnn2table.py`:生成量化表。
+
+5.
+- `ncnn2int8.py`: 进行训练后量化。
+
+6.
+- `map50.py`: 计算 mIoU.
+  
+## 安装依赖
+
+在运行脚本之前，请确保您已安装以下依赖项：
+
+```sh
+pip install -r requirements.txt
+```
+
+## 使用方法
+
+1. 将 PyTorch 模型转换为 ONNX 模型
+- 下载并将预训练模型权重文件 best_deeplabv3plus_mobilenet_cityscapes_os16.pth 放置在与 pt2onnx.py 相同的目录中。
+
+```python
+python pt2onnx.py
+```
+
+2. simplify.py
+指定输入的onnx模型路径
+input_path = r"替换为您的输入ONNX模型路径"
+指定简化后输出的onnx模型路径
+output_path = r"替换为您的输出ONNX模型路径"
+
+```python
+python simplify.py
+```
+
+3. ONNX 转换为 NCNN 模型
+- 确保已安装 NCNN 工具集，并将 onnx2ncnn.exe 的路径正确设置在脚本中。
+- 修改脚本中的以下路径：
+  - `onnx2ncnn_path`: 指向 onnx2ncnn.exe 的路径
+  - `simplified_onnx_path`: 指向简化后的 ONNX 模型文件
+  - `ncnn_param_path`: 指定 NCNN param 文件的输出路径
+  - `ncnn_bin_path`: 指定 NCNN bin 文件的输出路径
+
+```python
+python onnx2ncnn.py
+```
+
+4. 生成量化表
+- 确保已准备好校准数据集，并创建包含图像路径的列表文件。
+- 修改脚本中的以下路径和参数：
+  - `ncnn2table_path`: 指向 ncnn2table.exe 的路径
+  - `param_path`: 指向 NCNN param 文件路径
+  - `bin_path`: 指向 NCNN bin 文件路径
+  - `image_list_path`: 指向校准图像列表文件路径
+  - `table_path`: 指定生成的量化表输出路径
+  - 调整 `mean_values`, `norm_values`, `size`, `num_threads` 等参数
+
+```python 
+python ncnn2table.py
+```
+
+5. 执行 INT8 量化
+- 确保已生成量化表。
+- 修改脚本中的以下路径：
+  - `ncnn2int8_path`: 指向 ncnn2int8.exe 的路径
+  - `bin_file`: 指向输入的 NCNN bin 文件路径
+  - `param_file`: 指向输入的 NCNN param 文件路径
+  - `table_file`: 指向生成的量化表文件路径
+  - `output_param_file`: 指定量化后的 param 文件输出路径
+  - `output_bin_file`: 指定量化后的 bin 文件输出路径
+
+```python
+python ncnn2int8.py
+```
+
+6. 评估模型性能
+- 准备好测试数据集和对应的标注文件。
+- 修改脚本中的以下路径：
+  - `param_path`: 指向量化后的 NCNN param 文件路径
+  - `bin_path`: 指向量化后的 NCNN bin 文件路径
+  - `test_image_dir`: 指向测试图像目录
+  - `test_annotation_dir`: 指向测试标注文件目录
+- 确保 `cityscapes_labels` 列表与您的数据集类别一致。
+  
+```python
+python map50.py
+```
+
+## 贡献
+欢迎对本项目进行贡献。如果您有任何建议或发现任何问题，请随时提交 issue 或 pull request。
+
+## 许可证
+本项目使用 MIT 许可证。
 
 ## Quick Start 
 
