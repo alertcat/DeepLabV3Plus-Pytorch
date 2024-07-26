@@ -1,0 +1,133 @@
+7767517
+131 146
+Input                    input                    0 1 input
+Convolution              Conv_30                  1 1 input input.4 0=32 1=3 3=2 5=1 6=864 8=2
+Clip                     Clip_33                  1 1 input.4 onnx::Pad_363 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_48                  1 1 onnx::Pad_363 input.16 0=32 1=3 4=1 5=1 6=288 7=32 8=1
+Clip                     Clip_51                  1 1 input.16 onnx::Conv_392 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_52                  1 1 onnx::Conv_392 onnx::Pad_1066 0=16 1=1 5=1 6=512 8=102
+Convolution              Conv_67                  1 1 onnx::Pad_1066 input.32 0=96 1=1 4=1 5=1 6=1536 8=2
+Clip                     Clip_70                  1 1 input.32 onnx::Conv_423 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_71                  1 1 onnx::Conv_423 input.40 0=96 1=3 3=2 5=1 6=864 7=96 8=1
+Clip                     Clip_74                  1 1 input.40 onnx::Conv_428 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_75                  1 1 onnx::Conv_428 onnx::Pad_1075 0=24 1=1 5=1 6=2304 8=2
+Split                    splitncnn_0              1 2 onnx::Pad_1075 onnx::Pad_1075_splitncnn_0 onnx::Pad_1075_splitncnn_1
+Convolution              Conv_90                  1 1 onnx::Pad_1075_splitncnn_1 input.56 0=144 1=1 4=1 5=1 6=3456 8=2
+Clip                     Clip_93                  1 1 input.56 onnx::Conv_459 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_94                  1 1 onnx::Conv_459 input.64 0=144 1=3 5=1 6=1296 7=144 8=1
+Clip                     Clip_97                  1 1 input.64 onnx::Conv_464 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_98                  1 1 onnx::Conv_464 onnx::Add_1084 0=24 1=1 5=1 6=3456 8=2
+BinaryOp                 Add_99                   2 1 onnx::Pad_1075_splitncnn_0 onnx::Add_1084 input.72
+Split                    splitncnn_1              1 2 input.72 input.72_splitncnn_0 input.72_splitncnn_1
+Convolution              Conv_114                 1 1 input.72_splitncnn_1 input.84 0=144 1=1 4=1 5=1 6=3456 8=2
+Clip                     Clip_117                 1 1 input.84 onnx::Conv_496 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_118                 1 1 onnx::Conv_496 input.92 0=144 1=3 3=2 5=1 6=1296 7=144 8=1
+Clip                     Clip_121                 1 1 input.92 onnx::Conv_501 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_122                 1 1 onnx::Conv_501 onnx::Pad_1093 0=32 1=1 5=1 6=4608 8=2
+Split                    splitncnn_2              1 2 onnx::Pad_1093 onnx::Pad_1093_splitncnn_0 onnx::Pad_1093_splitncnn_1
+Convolution              Conv_137                 1 1 onnx::Pad_1093_splitncnn_1 input.108 0=192 1=1 4=1 5=1 6=6144 8=2
+Clip                     Clip_140                 1 1 input.108 onnx::Conv_532 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_141                 1 1 onnx::Conv_532 input.116 0=192 1=3 5=1 6=1728 7=192 8=1
+Clip                     Clip_144                 1 1 input.116 onnx::Conv_537 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_145                 1 1 onnx::Conv_537 onnx::Add_1102 0=32 1=1 5=1 6=6144 8=2
+BinaryOp                 Add_146                  2 1 onnx::Pad_1093_splitncnn_0 onnx::Add_1102 onnx::Pad_540
+Split                    splitncnn_3              1 2 onnx::Pad_540 onnx::Pad_540_splitncnn_0 onnx::Pad_540_splitncnn_1
+Convolution              Conv_161                 1 1 onnx::Pad_540_splitncnn_1 input.132 0=192 1=1 4=1 5=1 6=6144 8=2
+Clip                     Clip_164                 1 1 input.132 onnx::Conv_569 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_165                 1 1 onnx::Conv_569 input.140 0=192 1=3 5=1 6=1728 7=192 8=1
+Clip                     Clip_168                 1 1 input.140 onnx::Conv_574 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_169                 1 1 onnx::Conv_574 onnx::Add_1111 0=32 1=1 5=1 6=6144 8=2
+BinaryOp                 Add_170                  2 1 onnx::Pad_540_splitncnn_0 onnx::Add_1111 onnx::Pad_577
+Convolution              Conv_185                 1 1 onnx::Pad_577 input.156 0=192 1=1 4=1 5=1 6=6144 8=2
+Clip                     Clip_188                 1 1 input.156 onnx::Conv_606 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_189                 1 1 onnx::Conv_606 input.164 0=192 1=3 5=1 6=1728 7=192 8=1
+Clip                     Clip_192                 1 1 input.164 onnx::Conv_611 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_193                 1 1 onnx::Conv_611 onnx::Pad_1120 0=64 1=1 5=1 6=12288 8=2
+Split                    splitncnn_4              1 2 onnx::Pad_1120 onnx::Pad_1120_splitncnn_0 onnx::Pad_1120_splitncnn_1
+Convolution              Conv_208                 1 1 onnx::Pad_1120_splitncnn_1 input.180 0=384 1=1 4=2 5=1 6=24576 8=2
+Clip                     Clip_211                 1 1 input.180 onnx::Conv_642 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_212                 1 1 onnx::Conv_642 input.188 0=384 1=3 2=2 5=1 6=3456 7=384 8=1
+Clip                     Clip_215                 1 1 input.188 onnx::Conv_647 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_216                 1 1 onnx::Conv_647 onnx::Add_1129 0=64 1=1 5=1 6=24576 8=2
+BinaryOp                 Add_217                  2 1 onnx::Pad_1120_splitncnn_0 onnx::Add_1129 onnx::Pad_650
+Split                    splitncnn_5              1 2 onnx::Pad_650 onnx::Pad_650_splitncnn_0 onnx::Pad_650_splitncnn_1
+Convolution              Conv_232                 1 1 onnx::Pad_650_splitncnn_1 input.204 0=384 1=1 4=2 5=1 6=24576 8=2
+Clip                     Clip_235                 1 1 input.204 onnx::Conv_679 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_236                 1 1 onnx::Conv_679 input.212 0=384 1=3 2=2 5=1 6=3456 7=384 8=1
+Clip                     Clip_239                 1 1 input.212 onnx::Conv_684 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_240                 1 1 onnx::Conv_684 onnx::Add_1138 0=64 1=1 5=1 6=24576 8=2
+BinaryOp                 Add_241                  2 1 onnx::Pad_650_splitncnn_0 onnx::Add_1138 onnx::Pad_687
+Split                    splitncnn_6              1 2 onnx::Pad_687 onnx::Pad_687_splitncnn_0 onnx::Pad_687_splitncnn_1
+Convolution              Conv_256                 1 1 onnx::Pad_687_splitncnn_1 input.228 0=384 1=1 4=2 5=1 6=24576 8=2
+Clip                     Clip_259                 1 1 input.228 onnx::Conv_716 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_260                 1 1 onnx::Conv_716 input.236 0=384 1=3 2=2 5=1 6=3456 7=384 8=1
+Clip                     Clip_263                 1 1 input.236 onnx::Conv_721 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_264                 1 1 onnx::Conv_721 onnx::Add_1147 0=64 1=1 5=1 6=24576 8=2
+BinaryOp                 Add_265                  2 1 onnx::Pad_687_splitncnn_0 onnx::Add_1147 onnx::Pad_724
+Convolution              Conv_280                 1 1 onnx::Pad_724 input.252 0=384 1=1 4=2 5=1 6=24576 8=2
+Clip                     Clip_283                 1 1 input.252 onnx::Conv_753 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_284                 1 1 onnx::Conv_753 input.260 0=384 1=3 2=2 5=1 6=3456 7=384 8=1
+Clip                     Clip_287                 1 1 input.260 onnx::Conv_758 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_288                 1 1 onnx::Conv_758 onnx::Pad_1156 0=96 1=1 5=1 6=36864 8=2
+Split                    splitncnn_7              1 2 onnx::Pad_1156 onnx::Pad_1156_splitncnn_0 onnx::Pad_1156_splitncnn_1
+Convolution              Conv_303                 1 1 onnx::Pad_1156_splitncnn_1 input.276 0=576 1=1 4=2 5=1 6=55296 8=2
+Clip                     Clip_306                 1 1 input.276 onnx::Conv_789 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_307                 1 1 onnx::Conv_789 input.284 0=576 1=3 2=2 5=1 6=5184 7=576 8=1
+Clip                     Clip_310                 1 1 input.284 onnx::Conv_794 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_311                 1 1 onnx::Conv_794 onnx::Add_1165 0=96 1=1 5=1 6=55296 8=2
+BinaryOp                 Add_312                  2 1 onnx::Pad_1156_splitncnn_0 onnx::Add_1165 onnx::Pad_797
+Split                    splitncnn_8              1 2 onnx::Pad_797 onnx::Pad_797_splitncnn_0 onnx::Pad_797_splitncnn_1
+Convolution              Conv_327                 1 1 onnx::Pad_797_splitncnn_1 input.300 0=576 1=1 4=2 5=1 6=55296 8=2
+Clip                     Clip_330                 1 1 input.300 onnx::Conv_826 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_331                 1 1 onnx::Conv_826 input.308 0=576 1=3 2=2 5=1 6=5184 7=576 8=1
+Clip                     Clip_334                 1 1 input.308 onnx::Conv_831 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_335                 1 1 onnx::Conv_831 onnx::Add_1174 0=96 1=1 5=1 6=55296 8=2
+BinaryOp                 Add_336                  2 1 onnx::Pad_797_splitncnn_0 onnx::Add_1174 onnx::Pad_834
+Convolution              Conv_351                 1 1 onnx::Pad_834 input.324 0=576 1=1 4=2 5=1 6=55296 8=2
+Clip                     Clip_354                 1 1 input.324 onnx::Conv_863 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_355                 1 1 onnx::Conv_863 input.332 0=576 1=3 2=2 5=1 6=5184 7=576 8=1
+Clip                     Clip_358                 1 1 input.332 onnx::Conv_868 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_359                 1 1 onnx::Conv_868 onnx::Pad_1183 0=160 1=1 5=1 6=92160 8=2
+Split                    splitncnn_9              1 2 onnx::Pad_1183 onnx::Pad_1183_splitncnn_0 onnx::Pad_1183_splitncnn_1
+Convolution              Conv_374                 1 1 onnx::Pad_1183_splitncnn_1 input.348 0=960 1=1 4=4 5=1 6=153600 8=2
+Clip                     Clip_377                 1 1 input.348 onnx::Conv_899 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_378                 1 1 onnx::Conv_899 input.356 0=960 1=3 2=4 5=1 6=8640 7=960 8=1
+Clip                     Clip_381                 1 1 input.356 onnx::Conv_904 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_382                 1 1 onnx::Conv_904 onnx::Add_1192 0=160 1=1 5=1 6=153600 8=2
+BinaryOp                 Add_383                  2 1 onnx::Pad_1183_splitncnn_0 onnx::Add_1192 onnx::Pad_907
+Split                    splitncnn_10             1 2 onnx::Pad_907 onnx::Pad_907_splitncnn_0 onnx::Pad_907_splitncnn_1
+Convolution              Conv_398                 1 1 onnx::Pad_907_splitncnn_1 input.372 0=960 1=1 4=4 5=1 6=153600 8=2
+Clip                     Clip_401                 1 1 input.372 onnx::Conv_936 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_402                 1 1 onnx::Conv_936 input.380 0=960 1=3 2=4 5=1 6=8640 7=960 8=1
+Clip                     Clip_405                 1 1 input.380 onnx::Conv_941 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_406                 1 1 onnx::Conv_941 onnx::Add_1201 0=160 1=1 5=1 6=153600 8=2
+BinaryOp                 Add_407                  2 1 onnx::Pad_907_splitncnn_0 onnx::Add_1201 onnx::Pad_944
+Convolution              Conv_422                 1 1 onnx::Pad_944 input.396 0=960 1=1 4=4 5=1 6=153600 8=2
+Clip                     Clip_425                 1 1 input.396 onnx::Conv_973 0=0.000000e+00 1=6.000000e+00
+ConvolutionDepthWise     Conv_426                 1 1 onnx::Conv_973 input.404 0=960 1=3 2=4 5=1 6=8640 7=960 8=1
+Clip                     Clip_429                 1 1 input.404 onnx::Conv_978 0=0.000000e+00 1=6.000000e+00
+Convolution              Conv_430                 1 1 onnx::Conv_978 input.412 0=320 1=1 5=1 6=307200 8=2
+Split                    splitncnn_11             1 5 input.412 input.412_splitncnn_0 input.412_splitncnn_1 input.412_splitncnn_2 input.412_splitncnn_3 input.412_splitncnn_4
+Convolution              Conv_431                 1 1 input.72_splitncnn_0 input.420 0=48 1=1 5=1 6=1152 8=2
+ReLU                     Relu_432                 1 1 input.420 onnx::Shape_983
+Convolution              Conv_433                 1 1 input.412_splitncnn_4 input.428 0=256 1=1 5=1 6=81920 8=2
+ReLU                     Relu_434                 1 1 input.428 onnx::Concat_986
+Convolution              Conv_435                 1 1 input.412_splitncnn_3 input.436 0=256 1=3 2=12 4=12 5=1 6=737280 8=2
+ReLU                     Relu_436                 1 1 input.436 onnx::Concat_989
+Convolution              Conv_437                 1 1 input.412_splitncnn_2 input.444 0=256 1=3 2=24 4=24 5=1 6=737280 8=2
+ReLU                     Relu_438                 1 1 input.444 onnx::Concat_992
+Convolution              Conv_439                 1 1 input.412_splitncnn_1 input.452 0=256 1=3 2=36 4=36 5=1 6=737280 8=2
+ReLU                     Relu_440                 1 1 input.452 onnx::Concat_995
+Pooling                  GlobalAveragePool_447    1 1 input.412_splitncnn_0 input.456 0=1 4=1
+Convolution              Conv_448                 1 1 input.456 input.464 0=256 1=1 5=1 6=81920 8=2
+ReLU                     Relu_449                 1 1 input.464 onnx::Shape_1005
+Interp                   Resize_462               1 1 onnx::Shape_1005 onnx::Concat_1018 0=2 3=64 4=64
+Concat                   Concat_463               5 1 onnx::Concat_986 onnx::Concat_989 onnx::Concat_992 onnx::Concat_995 onnx::Concat_1018 input.468
+Convolution              Conv_464                 1 1 input.468 input.476 0=256 1=1 5=1 6=327680 8=2
+ReLU                     Relu_465                 1 1 input.476 onnx::Shape_1022
+Interp                   Resize_484               1 1 onnx::Shape_1022 onnx::Concat_1041 0=2 3=128 4=128
+Concat                   Concat_485               2 1 onnx::Shape_983 onnx::Concat_1041 input.480
+Convolution              Conv_486                 1 1 input.480 input.488 0=256 1=3 4=1 5=1 6=700416 8=2
+ReLU                     Relu_487                 1 1 input.488 onnx::Conv_1045
+Convolution              Conv_488                 1 1 onnx::Conv_1045 x 0=19 1=1 5=1 6=4864 8=2
+Interp                   Resize_497               1 1 x output 0=2 3=513 4=513
